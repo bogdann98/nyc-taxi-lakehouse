@@ -1,0 +1,59 @@
+# Bitnami Kafka 32.x — KRaft mode (no ZooKeeper), single combined node.
+# PLAINTEXT listeners with no auth are intentional for the assessment.
+
+# As of mid-2025 Bitnami removed the free `bitnami/*` images from Docker Hub
+# (paid "secure" subset only). Free images live at `bitnamilegacy/*` for the
+# transition period. Upstream chart still defaults to `bitnami/kafka` which
+# returns 404, so we override the repository.
+image:
+  repository: bitnamilegacy/kafka
+
+# Single combined controller+broker node:
+#   controller.replicaCount=1 with broker.replicaCount=0 yields a node that runs
+#   both roles, which is the supported "tiny cluster" Bitnami setup.
+controller:
+  replicaCount: 1
+  resources:
+    requests:
+      cpu: 250m
+      memory: 768Mi
+    limits:
+      memory: 2Gi
+  persistence:
+    enabled: true
+    # Sized for the 3-month demo default. Bump to 150Gi for the full
+    # 2020-2025 brief — see README "Running the full 2020-2025 brief".
+    size: 4Gi
+broker:
+  replicaCount: 0
+
+# All listeners PLAINTEXT — internal-only cluster, no auth needed for assessment.
+# We leave the chart's `sasl:` section at its defaults: with PLAINTEXT listeners
+# the SASL config is wired but unused (the chart's NOTES template references it,
+# which is why it validates even when not in active use).
+listeners:
+  client:
+    protocol: PLAINTEXT
+  controller:
+    protocol: PLAINTEXT
+  interbroker:
+    protocol: PLAINTEXT
+  external:
+    protocol: PLAINTEXT
+
+# Single-node replication settings (defaults assume a multi-broker cluster).
+extraConfig: |
+  default.replication.factor=1
+  offsets.topic.replication.factor=1
+  transaction.state.log.replication.factor=1
+  transaction.state.log.min.isr=1
+  min.insync.replicas=1
+  auto.create.topics.enable=true
+  num.partitions=3
+
+# Internal Service only; producer + Spark connect via cluster DNS:
+#   kafka.data.svc.cluster.local:9092
+service:
+  type: ClusterIP
+externalAccess:
+  enabled: false

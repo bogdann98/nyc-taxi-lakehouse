@@ -1,0 +1,23 @@
+==> Running smoke queries (non-interactive)
+All commands and output from this session will be recorded in container logs, including credentials and sensitive information passed through the command prompt.
+If you don't see a command prompt, try pressing enter.
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/05/08 12:14:33 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/05/08 12:14:35 WARN HiveConf: HiveConf of name hive.stats.jdbc.timeout does not exist
+26/05/08 12:14:35 WARN HiveConf: HiveConf of name hive.stats.retries.wait does not exist
+26/05/08 12:14:36 WARN ObjectStore: Version information not found in metastore. hive.metastore.schema.verification is not enabled so recording the schema version 2.3.0
+26/05/08 12:14:36 WARN ObjectStore: setMetaStoreSchemaVersion called but recording version is disabled: version = 2.3.0, comment = Set by MetaStore UNKNOWN@10.244.0.34
+26/05/08 12:14:36 WARN ObjectStore: Failed to get database default, returning NoSuchObjectException
+Spark Web UI available at http://spark-sql:4040
+Spark master: local[*], Application Id: local-1778242474519
+taxi
+Time taken: 1.419 seconds, Fetched 1 row(s)
+green
+yellow
+Time taken: 0.537 seconds, Fetched 2 row(s)
+26/05/08 12:14:39 WARN MetricsConfig: Cannot locate configuration: tried hadoop-metrics2-s3a-file-system.properties,hadoop-metrics2.properties
+Time taken: 4.723 seconds, Fetched 2 row(s)
+green	5681986
+yellow	223412046
+pod "spark-sql" deleted from data namespace

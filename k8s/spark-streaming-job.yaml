@@ -1,0 +1,59 @@
+# Spark Structured Streaming job — runs in `local[*]` mode inside a single
+# K8s Job pod. Reads from Kafka topics taxi.{yellow,green} and writes Iceberg
+# tables to MinIO via the Nessie catalog.
+#
+# Trigger is `availableNow` (set in the job code), so this Job processes
+# everything currently in the topics, then exits cleanly.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: spark-streaming
+  namespace: data
+  labels:
+    app: spark-streaming
+spec:
+  ttlSecondsAfterFinished: 7200
+  backoffLimit: 0
+  template:
+    metadata:
+      labels:
+        app: spark-streaming
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: spark
+          image: lakehouse-spark:dev
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: KAFKA_BOOTSTRAP
+              value: kafka.data.svc.cluster.local:9092
+            - name: NESSIE_URI
+              value: http://nessie.data.svc.cluster.local:19120/api/v2
+            - name: S3_ENDPOINT
+              value: http://minio.data.svc.cluster.local:9000
+            - name: WAREHOUSE
+              value: s3a://lakehouse/warehouse
+            - name: CHECKPOINTS
+              value: s3a://lakehouse/_checkpoints
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: minio
+                  key: rootUser
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: minio
+                  key: rootPassword
+            - name: SPARK_DRIVER_MEMORY
+              value: 2g
+            - name: SPARK_EXECUTOR_MEMORY
+              value: 2g
+          resources:
+            requests:
+              cpu: 500m
+              memory: 2Gi
+            # Demo default. Bump to 6Gi for the full 2020-2025 brief —
+            # 4Gi caused GC thrash on the first big yellow batches.
+            limits:
+              memory: 3Gi

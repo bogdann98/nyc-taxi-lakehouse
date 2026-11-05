@@ -1,0 +1,39 @@
+# One-shot Job that streams NYC TLC parquet files into Kafka.
+#
+# Range / taxi types come from the `data-range` ConfigMap which is created at
+# deploy time from config/data-range.env (see scripts/deploy.sh in Phase 7).
+# The image `lakehouse-producer:dev` is built locally and loaded into Minikube.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: producer
+  namespace: data
+  labels:
+    app: producer
+spec:
+  ttlSecondsAfterFinished: 3600
+  backoffLimit: 0          # don't retry — re-run the whole job manually if it fails
+  template:
+    metadata:
+      labels:
+        app: producer
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: producer
+          image: lakehouse-producer:dev
+          imagePullPolicy: IfNotPresent   # use the image loaded into Minikube
+          envFrom:
+            - configMapRef:
+                name: data-range
+          env:
+            - name: KAFKA_BOOTSTRAP
+              value: kafka.data.svc.cluster.local:9092
+            - name: BATCH_SIZE
+              value: "1000"
+          resources:
+            requests:
+              cpu: 200m
+              memory: 512Mi
+            limits:
+              memory: 1Gi

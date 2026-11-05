@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local data — must NEVER be committed (per assessment brief)
+data/
+*.parquet
+downloads/
+
+# Kubernetes / local state
+kubeconfig
+*.kubeconfig
+.minikube/
+
+# Logs
+*.log
+logs/
+
+# Secrets (config/data-range.env is intentionally tracked — no secrets in it)
+*.secret
+.env.local
+
+# Local-only — kept on disk, never published
+*.pdf
+SUBMISSION_NOTES.md
+.claude/

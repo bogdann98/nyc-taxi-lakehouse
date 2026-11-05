@@ -1,0 +1,26 @@
+# Nessie — git-like catalog for Iceberg tables. Backed by in-memory store
+# for assessment simplicity (state is lost on pod restart — documented
+# trade-off in README; data files in MinIO survive, only the catalog index
+# is volatile).
+
+replicas: 1
+
+versionStoreType: IN_MEMORY
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 512Mi
+  limits:
+    memory: 1Gi
+
+service:
+  type: ClusterIP
+  port: 19120
+
+# Authentication off — internal-only cluster.
+authentication:
+  enabled: false
+
+# Service URL inside the cluster:
+#   http://nessie.data.svc.cluster.local:19120/api/v2

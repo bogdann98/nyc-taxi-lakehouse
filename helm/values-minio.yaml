@@ -1,0 +1,31 @@
+# MinIO — single-node S3-compatible object store for the Iceberg lakehouse.
+# Credentials are intentionally well-known for the assessment; do NOT use in prod.
+
+mode: standalone
+replicas: 1
+
+rootUser: admin
+rootPassword: minioadmin123   # MinIO requires >= 8 chars
+
+persistence:
+  enabled: true
+  # Demo default. Bump to 30Gi for the full 2020-2025 brief.
+  size: 10Gi
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 512Mi
+  limits:
+    memory: 1Gi
+
+service:
+  type: ClusterIP
+  port: 9000
+consoleService:
+  type: ClusterIP
+  port: 9001
+
+# We create buckets via a separate K8s Job (see k8s/minio-bucket-job.yaml in Phase 4)
+# rather than the chart's built-in `buckets:` block — keeps bucket setup visible
+# and decoupled from the chart lifecycle.

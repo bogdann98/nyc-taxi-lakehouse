@@ -1,0 +1,8 @@
+# Spark Job FINAL ROW COUNTS — full 2020-2025 run
+# These are the totals printed by streaming_job.py after both topics were drained.
+
+2026-05-08 11:43:52,716 [INFO] starting yellow stream
+2026-05-08 11:43:53,151 [INFO] starting green stream
+2026-05-08 12:09:35,615 [INFO] yellow stream done
+2026-05-08 12:09:35,625 [INFO] green stream done
+2026-05-08 12:09:37,525 [INFO] FINAL ROW COUNTS: yellow=223412046  green=5681986  total=229094032

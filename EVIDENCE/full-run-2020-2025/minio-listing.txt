@@ -1,0 +1,52 @@
+# Lakehouse MinIO bucket listing — full 2020-2025 run
+# Captured 2026-05-08T12:16:37Z
+
+## Final dataset summary
+  yellow rows:  223,412,046  (Iceberg table: nessie.taxi.yellow)
+  green rows:     5,681,986  (Iceberg table: nessie.taxi.green)
+  total rows:   229,094,032
+
+## File counts in MinIO
+  yellow data files (.parquet):    1536
+  yellow metadata (.json + .avro): 2683
+  green data files (.parquet):     134
+  green metadata (.json + .avro):  70
+
+## Yellow partitions (months) — first 15 of 73
+tpep_pickup_datetime_month=2001-01
+tpep_pickup_datetime_month=2001-08
+tpep_pickup_datetime_month=2002-10
+tpep_pickup_datetime_month=2002-12
+tpep_pickup_datetime_month=2003-01
+tpep_pickup_datetime_month=2003-03
+tpep_pickup_datetime_month=2004-04
+tpep_pickup_datetime_month=2007-12
+tpep_pickup_datetime_month=2008-12
+tpep_pickup_datetime_month=2009-01
+tpep_pickup_datetime_month=2011-01
+tpep_pickup_datetime_month=2011-02
+tpep_pickup_datetime_month=2012-02
+tpep_pickup_datetime_month=2014-11
+tpep_pickup_datetime_month=2019-12
+  ... (and 77 more partitions)
+
+## Green partitions (months) — first 15 of 72
+lpep_pickup_datetime_month=2008-12
+lpep_pickup_datetime_month=2009-01
+lpep_pickup_datetime_month=2010-09
+lpep_pickup_datetime_month=2019-12
+lpep_pickup_datetime_month=2020-01
+lpep_pickup_datetime_month=2020-02
+lpep_pickup_datetime_month=2020-03
+lpep_pickup_datetime_month=2020-04
+lpep_pickup_datetime_month=2020-05
+lpep_pickup_datetime_month=2020-06
+lpep_pickup_datetime_month=2020-07
+lpep_pickup_datetime_month=2020-08
+lpep_pickup_datetime_month=2020-09
+lpep_pickup_datetime_month=2020-10
+lpep_pickup_datetime_month=2020-11
+  ... (and 63 more partitions)
+
+## Total bucket size
+3.9GiB	4675 objects	lakehouse

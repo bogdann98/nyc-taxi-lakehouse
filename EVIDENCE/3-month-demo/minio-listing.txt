@@ -1,0 +1,32 @@
+# Lakehouse MinIO bucket listing — captured after a clean 'make up' (default 2024 Q1 range)
+
+## Top level
+[2026-05-06 17:32:37 UTC]     0B _checkpoints/
+[2026-05-06 17:32:37 UTC]     0B warehouse/
+
+## Warehouse — recursive
+[2026-05-06 17:31:09 UTC] 6.1KiB STANDARD taxi/green_13c5526d-680e-420d-8395-60999a2b629c/data/lpep_pickup_datetime_month=2008-12/00003-3-000c6e23-e039-42bb-82e8-ec43c0969e6e-0-00002.parquet
+[2026-05-06 17:31:08 UTC] 6.0KiB STANDARD taxi/green_13c5526d-680e-420d-8395-60999a2b629c/data/lpep_pickup_datetime_month=2023-12/00003-3-000c6e23-e039-42bb-82e8-ec43c0969e6e-0-00001.parquet
+[2026-05-06 17:31:09 UTC] 912KiB STANDARD taxi/green_13c5526d-680e-420d-8395-60999a2b629c/data/lpep_pickup_datetime_month=2024-01/00004-4-000c6e23-e039-42bb-82e8-ec43c0969e6e-0-00001.parquet
+[2026-05-06 17:31:09 UTC] 865KiB STANDARD taxi/green_13c5526d-680e-420d-8395-60999a2b629c/data/lpep_pickup_datetime_month=2024-02/00007-6-000c6e23-e039-42bb-82e8-ec43c0969e6e-0-00001.parquet
+[2026-05-06 17:31:09 UTC] 926KiB STANDARD taxi/green_13c5526d-680e-420d-8395-60999a2b629c/data/lpep_pickup_datetime_month=2024-03/00001-2-000c6e23-e039-42bb-82e8-ec43c0969e6e-0-00001.parquet
+[2026-05-06 17:31:08 UTC] 5.5KiB STANDARD taxi/green_13c5526d-680e-420d-8395-60999a2b629c/data/lpep_pickup_datetime_month=2024-04/00005-5-000c6e23-e039-42bb-82e8-ec43c0969e6e-0-00001.parquet
+[2026-05-06 17:31:03 UTC] 3.2KiB STANDARD taxi/green_13c5526d-680e-420d-8395-60999a2b629c/metadata/00000-d13a54bf-7ca9-4fcf-8e3d-a026ffae677f.metadata.json
+[2026-05-06 17:31:09 UTC] 4.7KiB STANDARD taxi/green_13c5526d-680e-420d-8395-60999a2b629c/metadata/00001-1207a00d-5874-43a6-abfb-1fd4a4fdb921.metadata.json
+[2026-05-06 17:31:09 UTC] 9.3KiB STANDARD taxi/green_13c5526d-680e-420d-8395-60999a2b629c/metadata/d9fda7d2-c6a8-4d95-968f-1818f1172f17-m0.avro
+[2026-05-06 17:31:09 UTC] 4.4KiB STANDARD taxi/green_13c5526d-680e-420d-8395-60999a2b629c/metadata/snap-7050011556443406763-1-d9fda7d2-c6a8-4d95-968f-1818f1172f17.avro
+[2026-05-06 17:31:59 UTC] 6.1KiB STANDARD taxi/yellow_f0fe0901-4e9e-4b8b-adb2-8f3452046e33/data/tpep_pickup_datetime_month=2002-12/00000-10-1e2b9194-e4a1-4e37-b26d-e73678bb1f5f-0-00001.parquet
+[2026-05-06 17:31:59 UTC] 5.3KiB STANDARD taxi/yellow_f0fe0901-4e9e-4b8b-adb2-8f3452046e33/data/tpep_pickup_datetime_month=2008-12/00003-13-1e2b9194-e4a1-4e37-b26d-e73678bb1f5f-0-00002.parquet
+[2026-05-06 17:31:59 UTC] 6.0KiB STANDARD taxi/yellow_f0fe0901-4e9e-4b8b-adb2-8f3452046e33/data/tpep_pickup_datetime_month=2009-01/00002-12-1e2b9194-e4a1-4e37-b26d-e73678bb1f5f-0-00001.parquet
+[2026-05-06 17:31:59 UTC] 6.3KiB STANDARD taxi/yellow_f0fe0901-4e9e-4b8b-adb2-8f3452046e33/data/tpep_pickup_datetime_month=2023-12/00003-13-1e2b9194-e4a1-4e37-b26d-e73678bb1f5f-0-00001.parquet
+[2026-05-06 17:32:02 UTC]  44MiB STANDARD taxi/yellow_f0fe0901-4e9e-4b8b-adb2-8f3452046e33/data/tpep_pickup_datetime_month=2024-01/00004-14-1e2b9194-e4a1-4e37-b26d-e73678bb1f5f-0-00001.parquet
+[2026-05-06 17:32:02 UTC]  45MiB STANDARD taxi/yellow_f0fe0901-4e9e-4b8b-adb2-8f3452046e33/data/tpep_pickup_datetime_month=2024-02/00007-16-1e2b9194-e4a1-4e37-b26d-e73678bb1f5f-0-00001.parquet
+[2026-05-06 17:32:03 UTC]  53MiB STANDARD taxi/yellow_f0fe0901-4e9e-4b8b-adb2-8f3452046e33/data/tpep_pickup_datetime_month=2024-03/00001-11-1e2b9194-e4a1-4e37-b26d-e73678bb1f5f-0-00001.parquet
+[2026-05-06 17:31:59 UTC] 5.7KiB STANDARD taxi/yellow_f0fe0901-4e9e-4b8b-adb2-8f3452046e33/data/tpep_pickup_datetime_month=2024-04/00005-15-1e2b9194-e4a1-4e37-b26d-e73678bb1f5f-0-00001.parquet
+[2026-05-06 17:31:02 UTC] 3.1KiB STANDARD taxi/yellow_f0fe0901-4e9e-4b8b-adb2-8f3452046e33/metadata/00000-50392969-c900-4ef6-ba30-cada27c2148e.metadata.json
+[2026-05-06 17:32:03 UTC] 4.6KiB STANDARD taxi/yellow_f0fe0901-4e9e-4b8b-adb2-8f3452046e33/metadata/00001-3af1a351-43c2-4240-ad04-e5b8d57a7012.metadata.json
+[2026-05-06 17:32:03 UTC] 9.7KiB STANDARD taxi/yellow_f0fe0901-4e9e-4b8b-adb2-8f3452046e33/metadata/7bffbaa5-39d5-44f8-ae2b-6d829130dc6d-m0.avro
+[2026-05-06 17:32:03 UTC] 4.4KiB STANDARD taxi/yellow_f0fe0901-4e9e-4b8b-adb2-8f3452046e33/metadata/snap-969113245835043614-1-7bffbaa5-39d5-44f8-ae2b-6d829130dc6d.avro
+
+## Sizes
+145MiB	30 objects	lakehouse

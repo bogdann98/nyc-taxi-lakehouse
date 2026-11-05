@@ -1,0 +1,45 @@
+# One-shot Job that creates the `lakehouse` bucket in MinIO for Iceberg
+# data files + Spark checkpoints. Idempotent: re-running with the same
+# bucket name is a no-op (`mc mb --ignore-existing`).
+#
+# Credentials come from the chart-managed `minio` secret — never hardcoded.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: minio-create-bucket
+  namespace: data
+spec:
+  ttlSecondsAfterFinished: 600   # auto-clean 10 min after success
+  backoffLimit: 3
+  template:
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: mc
+          image: quay.io/minio/mc:RELEASE.2025-04-08T15-39-49Z
+          env:
+            - name: MINIO_USER
+              valueFrom:
+                secretKeyRef:
+                  name: minio
+                  key: rootUser
+            - name: MINIO_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: minio
+                  key: rootPassword
+          command:
+            - /bin/sh
+            - -c
+            - |
+              set -eu
+              echo "==> Configuring mc alias against in-cluster MinIO"
+              mc alias set local http://minio:9000 "$MINIO_USER" "$MINIO_PASSWORD"
+
+              echo "==> Creating bucket 'lakehouse' (idempotent)"
+              mc mb --ignore-existing local/lakehouse
+
+              echo "==> Buckets in MinIO:"
+              mc ls local/
+
+              echo "==> Done."
